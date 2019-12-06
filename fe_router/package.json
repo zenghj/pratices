@@ -1,0 +1,13 @@
+{
+  "name": "ferouter",
+  "version": "1.0.0",
+  "scripts": {
+    "example": "anywhere -p 8080"
+  },
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "anywhere": "^1.5.0"
+  }
+}
