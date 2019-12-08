@@ -21,7 +21,7 @@ var PrefetchDelegate = /** @class */ (function () {
             return;
         this.prefetched = true;
         this.prefetchRoute();
-        this.prefetchFiles();
+        // this.prefetchFiles();
         this.destroy();
     };
     PrefetchDelegate.prototype.resolveRoute = function () {

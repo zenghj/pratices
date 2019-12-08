@@ -38,7 +38,7 @@ class PrefetchDelegate {
     if (this.prefetched) return;
     this.prefetched = true;
     this.prefetchRoute();
-    this.prefetchFiles();
+    // this.prefetchFiles();
     this.destroy();
   }
   resolveRoute() {
