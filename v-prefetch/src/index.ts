@@ -1,10 +1,12 @@
-import Vue from 'vue'
+import Vue,  { ComponentOptions, PluginFunction, AsyncComponent } from 'vue'
 import {default as VueRouter, Location, Route} from 'vue-router'
 import { supportIntersectionObserver } from'./utils'
 
+type Component = ComponentOptions<Vue> | typeof Vue | AsyncComponent
+
 interface VPrefetchBinding {
   value: {
-    to: String | Location | Route;
+    to: RouteConfig;
     prefetchFiles: Array<String>;
       // timeout: Number;
   }
@@ -14,6 +16,14 @@ interface BindOptions {
   binding: VPrefetchBinding,
   vnode,
 }
+
+// https://stackoverflow.com/questions/41385059/possible-to-extend-types-in-typescript
+type PrefetchComponent = Component & {
+  _vPrefetched: Boolean
+}
+
+type RouteConfig = String | Location | Route
+
 class PrefetchDelegate {
   obeserver: IntersectionObserver;
   prefetched: Boolean;
@@ -51,14 +61,14 @@ class PrefetchDelegate {
         /* todo 联合类型传参类型问题*/
         // this.resolveRoute())
         <any>route)
-        .filter((Component) => typeof Component === 'function' &&
+        .filter((Component:PrefetchComponent) => typeof Component === 'function' &&
           /* todo ts 报错问题*/
-         !Component._v_prefetched);
-      Components.forEach((Component) => {
+         !Component._vPrefetched);
+      Components.forEach((Component:PrefetchComponent) => {
         if (typeof Component === 'function') {
           console.log('prefetch', route)
-          Component();
-          Component._v_prefetched = true
+          ;(Component as Function)();
+          Component._vPrefetched = true
         }
       })
     }

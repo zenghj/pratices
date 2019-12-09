@@ -36,12 +36,12 @@ var PrefetchDelegate = /** @class */ (function () {
             route_1)
                 .filter(function (Component) { return typeof Component === 'function' &&
                 /* todo ts 报错问题*/
-                !Component._v_prefetched; });
+                !Component._vPrefetched; });
             Components.forEach(function (Component) {
                 if (typeof Component === 'function') {
                     console.log('prefetch', route_1);
                     Component();
-                    Component._v_prefetched = true;
+                    Component._vPrefetched = true;
                 }
             });
         }

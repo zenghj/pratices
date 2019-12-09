@@ -1,10 +1,11 @@
 import { default as VueRouter, Location, Route } from 'vue-router';
 interface VPrefetchBinding {
     value: {
-        to: String | Location | Route;
+        to: RouteConfig;
         prefetchFiles: Array<String>;
     };
 }
+declare type RouteConfig = String | Location | Route;
 declare const _default: {
     name: string;
     getInstance({ router }: {
