@@ -1,0 +1,29 @@
+{
+  "name": "Didact-ts",
+  "description": "tiny react with typescript",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev": "yarn watch",
+    "watch": "tsc --watch",
+    "type-check": "tsc --noEmit",
+    "build": "tsc",
+    "build:types": "tsc --emitDeclarationOnly",
+    "doc": "typedoc --tsconfig tsconfig.json --out docs src",
+    "release": "",
+    "prerelease": "yarn test:coverage",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "test:coverage": "jest --coverage"
+  },
+  "version": "1.0.0",
+  "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.2.0",
+    "typedoc": "^0.15.3",
+    "typescript": "^3.7.3"
+  },
+  "author": "zenghj@outlook.com",
+  "license": "MIT"
+}
